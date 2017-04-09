@@ -7,9 +7,13 @@ This is a temporary script file.
 
 from tkinter import *
 from time import sleep
+import mp3play
 root = Tk()
+f = mp3play.load('Biosaur - Dimensional Drift BGM.mp3')
+play = lambda: f.play()
 s = Canvas(root,width = 1200, height = 600)
 s.pack()
+musicTime = 0
 ######
 #MAPS#
 ######
@@ -107,7 +111,12 @@ while game == True:
     if newroom == True:
         newroom = False
         blockx,blocky = roomgeneration(currmap,blockx,blocky)
-
+    
+    if musicTime == 0:
+        play()
+    musicTime ++
+    if musicTime == 1600
+        musicTime = 0
 
     ##############
     #Frame Update#
