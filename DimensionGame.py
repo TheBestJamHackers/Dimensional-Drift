@@ -2,8 +2,8 @@ from tkinter import *
 from time import sleep
 #import mp3play
 root = Tk()
-#f = mp3play.load('Biosaur - Dimensional Drift BGM.mp3')
-#play = lambda: f.play()
+f = mp3play.load('Biosaur - Dimensional Drift BGM.mp3')
+# play = lambda: f.play()
 s = Canvas(root,width = 1200, height = 600)
 s.pack()
 musicTime = 0
@@ -259,6 +259,87 @@ map3 = [[[0,0,1,2],
          [1,1,1,1]
          ]
         ]
+map3 = [[[
+[0,0,0,0],
+[1,1,1,0],
+[1,1,1,0],
+[2,0,0,0]
+],[
+[0,1,1,1],
+[1,1,1,1],
+[1,1,1,1],
+[1,1,1,1]
+],[
+[0,1,1,1],
+[1,1,1,1],
+[1,1,1,1],
+[1,1,1,1]
+],[
+[0,1,1,1],
+[1,1,1,1],
+[1,1,1,1],
+[1,1,1,1]
+]],[[
+[0,1,1,1],
+[1,1,1,1],
+[1,1,1,1],
+[1,1,1,1]
+],[
+[0,1,1,1],
+[1,1,1,1],
+[1,1,1,1],
+[1,1,1,1]
+],[
+[0,1,1,1],
+[1,1,1,1],
+[1,1,1,1],
+[1,1,1,1]
+],[
+[0,1,1,1],
+[1,1,1,1],
+[1,1,1,1],
+[1,1,1,1]
+]],[[
+[0,1,1,1],
+[1,1,1,1],
+[1,1,1,1],
+[1,1,1,1]
+],[
+[0,1,1,1],
+[1,1,1,1],
+[1,1,1,1],
+[1,1,1,1]
+],[
+[0,1,1,1],
+[1,1,1,1],
+[1,1,1,1],
+[1,1,1,1]
+],[
+[0,1,1,1],
+[1,1,1,1],
+[1,1,1,1],
+[1,1,1,1]
+]],[[
+[0,1,1,1],
+[1,1,1,1],
+[1,1,1,1],
+[1,1,1,1]
+],[
+[0,1,1,1],
+[1,1,1,1],
+[1,1,1,1],
+[1,1,1,1]
+],[
+[0,1,1,1],
+[1,1,1,1],
+[1,1,1,1],
+[1,1,1,1]
+],[
+[0,1,1,1],
+[1,1,1,1],
+[1,1,1,1],
+[1,1,1,1]
+]]]
 map4 = [[[
 [0,0,0,0],
 [1,1,1,1],
@@ -363,6 +444,8 @@ levelupdate = True
 ########
 imgblock = PhotoImage (file = "Images/Environment/Block.ppm")
 imgplayer = PhotoImage (file = "Images/Robot/bot front.ppm")
+imggrid = PhotoImage (file = "Images/Environment/Grid.ppm")
+imgbg = PhotoImage (file = "Images/Environment/Background.ppm")
 
 ###########
 #Functions#
@@ -402,8 +485,7 @@ while game == True:
     if currmap[x][y][z][w] == 2:
         levelupdate = True
     if musicTime == 0:
-        #play()
-        error = 1
+        f.play()
     musicTime += 1
     if musicTime == 1600:
         musicTime = 0
@@ -417,18 +499,22 @@ while game == True:
         currmap = levelup(level)
 
     if keys[0] == 1:
+        imgplayer = PhotoImage (file = "Images/Robot/bot right.ppm")
         if x+1<4:
             if currmap[x+1][y][z][w] != 1:
                 x += 1
     if keys[1] == 1:
+        imgplayer = PhotoImage (file = "Images/Robot/bot left.ppm")
         if x-1>-1:
             if currmap[x-1][y][z][w] != 1:
                 x -= 1
     if keys[2] == 1:
+        imgplayer = PhotoImage (file = "Images/Robot/bot up.ppm")
         if y-1>-1:
             if currmap[x][y-1][z][w] != 1:            
                 y -= 1
     if keys[3] == 1:
+        imgplayer = PhotoImage (file = "Images/Robot/bot down.ppm")
         if y+1<4:
             if currmap[x][y+1][z][w] != 1:
                 y += 1
@@ -441,10 +527,12 @@ while game == True:
             if currmap[x][y][z-1][w] != 1:
                 z -= 1
     if keys[6] == 1:
+        imgplayer = PhotoImage (file = "Images/Robot/bot front.ppm")
         if w-1>-1:
             if currmap[x][y][z][w-1] != 1:            
                 w -= 1
     if keys[7] == 1:
+        imgplayer = PhotoImage (file = "Images/Robot/bot back.ppm")
         if w+1<4:
             if currmap[x][y][z][w+1] != 1:
                 w += 1
@@ -454,6 +542,11 @@ while game == True:
     #Frame Update#
     ##############
     s.delete("all")
+
+    s.create_image(0, 0, image=imgbg)
+    s.create_image(150*size, 150*size, image=imggrid)
+    s.create_image(750*size, 150*size, image=imggrid)
+
     for x2 in range(len(currmap)):
         for y2 in range(len(currmap[x2])):
             if currmap[x2][y2][z][w] == 1:
@@ -472,5 +565,6 @@ while game == True:
 
     player = s.create_image(x*100*size+150*size,y*100*size+150*size,image=imgplayer)
     plawer = s.create_image(z*100*size+750*size,w*100*size+150*size,image=imgplayer)
+    
     s.update()
     sleep(0.1)
