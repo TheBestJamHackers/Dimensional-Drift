@@ -115,6 +115,7 @@ currmap = map1
 #Images#
 ########
 imgblock = PhotoImage (file = "Images/Environment/Block.pgm")
+imgplayer = PhotoImage (file = "Images/Robot/front.pgm")
 
 ###########
 #Functions#
@@ -198,24 +199,24 @@ while game == True:
     for x2 in range(len(currmap)):
         for y2 in range(len(currmap[x2])):
             if currmap[x2][y2][z][w] == 1:
-                s.create_rectangle(
+                s.create_image(
                         x2 * 100 * size + 150 * size,
                         y2 * 100 * size + 150 * size,
                         x2 * 100 * size + 50 * size,
                         y2 * 100 * size + 50 * size,
-                        fill="black")
+                        image=imgblock)
     
     for z2 in range(len(currmap[x][y])):
         for w2 in range(len(currmap[x][y][z2])):
             if currmap[x][y][z2][w2] == 1:
-                s.create_rectangle(
+                s.create_image(
                     z2 * 100 * size + 750 * size, 
                     w2 * 100 * size + 150 * size,
                     z2 * 100 * size + 650 * size,
                     w2 * 100 * size + 50 * size,
-                    fill="black")
+                    image=imgblock)
 
-    player = s.create_rectangle(x*100*size+150*size,y*100*size+150*size,x*100*size+50*size,y*100*size+50*size,fill="blue")
-    plawer = s.create_rectangle(z*100*size+750*size,w*100*size+150*size,z*100*size+650*size,w*100*size+50*size,fill="blue")
+    player = s.create_image(x*100*size+150*size,y*100*size+150*size,image=imgplayer)
+    plawer = s.create_image(z*100*size+750*size,w*100*size+150*size,image=imgplayer)
     s.update()
     sleep(0.1)
