@@ -147,7 +147,7 @@ root.bind("<s>", lambda event: bindKey(3,1))
 while game == True:
     if musicTime == 0:
         play()
-    musicTime ++
+    musicTime += 1
     if musicTime == 1600
         musicTime = 0
 
