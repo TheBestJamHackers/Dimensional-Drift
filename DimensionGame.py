@@ -1,9 +1,7 @@
 from tkinter import *
 from time import sleep
-import mp3play
+import winsound
 root = Tk()
-f = mp3play.load('Biosaur - Dimensional Drift BGM.mp3')
-# play = lambda: f.play()
 s = Canvas(root,width = 1200, height = 600)
 s.pack()
 musicTime = 0
@@ -93,7 +91,6 @@ map1 = [[[0,0,0,0],
          [0,0,0,0]
          ]
         ]
-<<<<<<< HEAD
 map2 = [[[0,0,0,0],
          [0,0,0,0],
          [0,0,0,0],
@@ -397,19 +394,16 @@ root.bind("<s>", lambda event: bindKey(3,1))
 #Main Loop#
 ###########
 while game == True:
-<<<<<<< HEAD
+
     if currmap[x][y][z][w] == 2:
         levelupdate = True
-=======
 
     if musicTime == 0:
-        f.play()
+        winsound.PlaySound('BGM.wav', winsound.SND_FILENAME)
     musicTime += 1
     if musicTime == 1600:
         musicTime = 0
 
-
->>>>>>> d739fe47858573e11a6c55c099d5cf8e84309bb2
     if levelupdate == True:
         x = 0
         y = 0
