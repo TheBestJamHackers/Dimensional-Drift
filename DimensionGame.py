@@ -160,18 +160,22 @@ root.bind("<s>", lambda event: bindKey(3,1))
 ###########
 while game == True:
     if keys[0] == 1:
+        imgplayer = PhotoImage (file = "Images/Robot/bot right.ppm")
         if x+1<4:
             if currmap[x+1][y][z][w] != 1:
                 x += 1
     if keys[1] == 1:
+        imgplayer = PhotoImage (file = "Images/Robot/bot left.ppm")
         if x-1>-1:
             if currmap[x-1][y][z][w] != 1:
                 x -= 1
     if keys[2] == 1:
+        imgplayer = PhotoImage (file = "Images/Robot/bot up.ppm")
         if y-1>-1:
             if currmap[x][y-1][z][w] != 1:            
                 y -= 1
     if keys[3] == 1:
+        imgplayer = PhotoImage (file = "Images/Robot/bot down.ppm")
         if y+1<4:
             if currmap[x][y+1][z][w] != 1:
                 y += 1
@@ -184,10 +188,12 @@ while game == True:
             if currmap[x][y][z-1][w] != 1:
                 z -= 1
     if keys[6] == 1:
+        imgplayer = PhotoImage (file = "Images/Robot/bot front.ppm")
         if w-1>-1:
             if currmap[x][y][z][w-1] != 1:            
                 w -= 1
     if keys[7] == 1:
+        imgplayer = PhotoImage (file = "Images/Robot/bot back.ppm")
         if w+1<4:
             if currmap[x][y][z][w+1] != 1:
                 w += 1
@@ -198,9 +204,11 @@ while game == True:
     #Frame Update#
     ##############
     s.delete("all")
+
     s.create_image(0, 0, image=imgbg)
     s.create_image(150*size, 150*size, image=imggrid)
-    s.create_image(150*size, 150*size, image=imggrid)
+    s.create_image(750*size, 150*size, image=imggrid)
+
     for x2 in range(len(currmap)):
         for y2 in range(len(currmap[x2])):
             if currmap[x2][y2][z][w] == 1:
