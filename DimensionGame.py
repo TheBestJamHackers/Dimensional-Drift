@@ -366,6 +366,7 @@ blocks = []
 currmap = map1
 musicTime = 0
 levelupdate = True
+level = 0
 
 ########
 #Images#
