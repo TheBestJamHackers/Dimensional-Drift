@@ -8,25 +8,62 @@ This is a temporary script file.
 from tkinter import *
 from time import sleep
 root = Tk()
-s = Canvas(root,width = 800, height = 800)
+s = Canvas(root,width = 1200, height = 600)
 s.pack()
+######
+#MAPS#
+######
+map1 = [
+        [1,1,1,0,0,0,0,1],
+        [1,0,0,0,0,0,0,1],
+        [1,0,0,0,0,0,0,0],
+        [1,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+        [0,0,0,0,0,0,0,0],
+        [0,1,0,0,0,0,0,1],
+        [0,0,0,0,0,1,1,1],
+        ]
 ###########
 #Variables#
 ###########
+size = 3/4
 player = 0
 keys = [0,0,0,0,0,0,0,0]
 x = 400
 y = 400
 w = 400
 z = 400
-size = 20
-speed = 3
+speed = 2.5
 game = True
+blockx = []
+blocky = []
+blocks = []
+newroom = True
+currmap = map1
 ###########
 #Functions#
 ###########
+def collision(x,y,blockx,blocky):
+    for i in range(len(blockx)):
+        if x > blockx[i]-80*size:
+            if x < blockx[i]+80*size:
+                if y > blocky[i]-80*size:
+                    if y < blocky[i]+80*size:
+                        return True
+            
 def bindKey(key, bind):
     keys[key] = bind
+
+def roomgeneration(currmap,blockx,blocky):
+    blockx = []
+    blocky = []
+    for i in range(len(currmap)):
+        for u in range(len(currmap[i])):
+            if currmap[i][u] == 1:
+                blockx.append((u*100*size)+50*size)
+                blocky.append((i*100*size)+50*size)
+    return(blockx,blocky)
+
 
 ##############
 #Key Bindings#
@@ -53,17 +90,28 @@ root.bind("<KeyRelease-s>", lambda event: bindKey(7,0))
 ###########
 while game == True:
     if keys[0] == 1:
-        x += speed
+        if collision(x+speed,y,blockx,blocky) != True:
+            x += speed
     if keys[1] == 1:
-        x -= speed
+        if collision(x-speed,y,blockx,blocky) != True:
+            x -= speed
     if keys[2] == 1:
-        y -= speed
+        if collision(x,y-speed,blockx,blocky) != True:
+            y -= speed
     if keys[3] == 1:
-        y += speed
+        if collision(x,y+speed,blockx,blocky) != True:
+            y += speed
+    if newroom == True:
+        newroom = False
+        blockx,blocky = roomgeneration(currmap,blockx,blocky)
+
+
     ##############
     #Frame Update#
     ##############
-    s.delete(player)
-    player = s.create_rectangle(x-size,y-size,x+size,y+size,fill="blue")
+    s.delete("all")
+    for i in range(len(blockx)):
+        s.create_rectangle(blockx[i]+50*size,blocky[i]+50*size,blockx[i]-50*size,blocky[i]-50*size,fill="black")
+    player = s.create_rectangle(x+30*size,y+30*size,x-30*size,y-30*size,fill="blue")
     s.update()
     sleep(0.01)
