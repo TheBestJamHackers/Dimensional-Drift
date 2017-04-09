@@ -13,15 +13,25 @@ s.pack()
 ######
 #MAPS#
 ######
-map1 = [
-        [1,1,1,0,0,0,0,1],
-        [1,0,0,0,0,0,0,1],
-        [1,0,0,0,0,0,0,0],
-        [1,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0],
-        [0,0,0,0,0,0,0,0],
-        [0,1,0,0,0,0,0,1],
-        [0,0,0,0,0,1,1,1],
+map1 = [[[1,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]],
+        [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]],
+        [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]],
+        [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
+        ],[
+        [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]],
+        [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]],
+        [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]],
+        [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
+        ],[
+        [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]],
+        [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]],
+        [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]],
+        [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
+        ],[
+        [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]],
+        [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]],
+        [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]],
+        [[0,0,0,0],[0,0,0,0],[0,0,0,0],[0,0,0,0]]
         ]
 ###########
 #Variables#
@@ -29,30 +39,21 @@ map1 = [
 size = 3/4
 player = 0
 keys = [0,0,0,0,0,0,0,0]
-x = 400
-y = 400
-w = 400
-z = 400
-speed = 2.5
+x = 2
+y = 2
+w = 2
+z = 2
 game = True
 blockx = []
 blocky = []
 blocks = []
-newroom = True
 currmap = map1
 ###########
 #Functions#
 ###########
-def collision(x,y,blockx,blocky):
-    for i in range(len(blockx)):
-        if x > blockx[i]-80*size:
-            if x < blockx[i]+80*size:
-                if y > blocky[i]-80*size:
-                    if y < blocky[i]+80*size:
-                        return True
-            
 def bindKey(key, bind):
     keys[key] = bind
+
 import mp3play
 #f = mp3play.load('Sound.mp3')
 #play = lambda: f.play()
@@ -71,42 +72,52 @@ def roomgeneration(currmap,blockx,blocky):
 ##############
 #Key Bindings#
 ##############
-root.bind("<Right>", lambda event: bindKey(0,1))
-root.bind("<Left>", lambda event: bindKey(1,1))
-root.bind("<Up>", lambda event: bindKey(2,1))
-root.bind("<Down>", lambda event: bindKey(3,1))
-root.bind("<KeyRelease-Right>", lambda event: bindKey(0,0))
-root.bind("<KeyRelease-Left>", lambda event: bindKey(1,0))
-root.bind("<KeyRelease-Up>", lambda event: bindKey(2,0))
-root.bind("<KeyRelease-Down>", lambda event: bindKey(3,0))
+root.bind("<Right>", lambda event: bindKey(4,1))
+root.bind("<Left>", lambda event: bindKey(5,1))
+root.bind("<Up>", lambda event: bindKey(6,1))
+root.bind("<Down>", lambda event: bindKey(7,1))
 
-root.bind("<d>", lambda event: bindKey(4,1))
-root.bind("<a>", lambda event: bindKey(5,1))
-root.bind("<w>", lambda event: bindKey(6,1))
-root.bind("<s>", lambda event: bindKey(7,1))
-root.bind("<KeyRelease-d>", lambda event: bindKey(4,0))
-root.bind("<KeyRelease-a>", lambda event: bindKey(5,0))
-root.bind("<KeyRelease-w>", lambda event: bindKey(6,0))
-root.bind("<KeyRelease-s>", lambda event: bindKey(7,0))
+root.bind("<d>", lambda event: bindKey(0,1))
+root.bind("<a>", lambda event: bindKey(1,1))
+root.bind("<w>", lambda event: bindKey(2,1))
+root.bind("<s>", lambda event: bindKey(3,1))
 ###########
 #Main Loop#
 ###########
 while game == True:
     if keys[0] == 1:
-        if collision(x+speed,y,blockx,blocky) != True:
-            x += speed
+        if x+1<4:
+            if currmap[x+1][y][z][w] != 1:
+                x += 1
     if keys[1] == 1:
-        if collision(x-speed,y,blockx,blocky) != True:
-            x -= speed
+        if x-1>-1:
+            if currmap[x-1][y][z][w] != 1:
+                x -= 1
     if keys[2] == 1:
-        if collision(x,y-speed,blockx,blocky) != True:
-            y -= speed
+        if y-1>-1:
+            if currmap[x][y-1][z][w] != 1:            
+                y -= 1
     if keys[3] == 1:
-        if collision(x,y+speed,blockx,blocky) != True:
-            y += speed
-    if newroom == True:
-        newroom = False
-        blockx,blocky = roomgeneration(currmap,blockx,blocky)
+        if y+1<4:
+            if currmap[x][y+1][z][w] != 1:
+                y += 1
+    if keys[4] == 1:
+        if z+1<4:
+            if currmap[x][y][z+1][w] != 1:
+                z += 1
+    if keys[5] == 1:
+        if z-1>-1:
+            if currmap[x][y][z-1][w] != 1:
+                z -= 1
+    if keys[6] == 1:
+        if w-1>-1:
+            if currmap[x][y][z][w-1] != 1:            
+                w -= 1
+    if keys[7] == 1:
+        if w+1<4:
+            if currmap[x][y][z][w+1] != 1:
+                w += 1
+    keys = [0,0,0,0,0,0,0,0]
 
 
     ##############
@@ -115,6 +126,7 @@ while game == True:
     s.delete("all")
     for i in range(len(blockx)):
         s.create_rectangle(blockx[i]+50*size,blocky[i]+50*size,blockx[i]-50*size,blocky[i]-50*size,fill="black")
-    player = s.create_rectangle(x+30*size,y+30*size,x-30*size,y-30*size,fill="blue")
+    player = s.create_rectangle(x*100+150*size,y*100+150*size,x*100+50*size,y*100+50*size,fill="blue")
+    plawer = s.create_rectangle(z*100+750*size,w*100+150*size,z*100+650*size,w*100+50*size,fill="blue")
     s.update()
-    sleep(0.01)
+    sleep(0.1)
