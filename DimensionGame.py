@@ -53,6 +53,9 @@ def collision(x,y,blockx,blocky):
             
 def bindKey(key, bind):
     keys[key] = bind
+import mp3play
+#f = mp3play.load('Sound.mp3')
+#play = lambda: f.play()
 
 def roomgeneration(currmap,blockx,blocky):
     blockx = []
