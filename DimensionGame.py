@@ -6,14 +6,10 @@ This is a temporary script file.
 """
 from tkinter import *
 from time import sleep
-<<<<<<< HEAD
+import winsound
+
 root = Tk()
 s = Canvas(root,width = 900, height = 450)
-=======
-import winsound
-root = Tk()
-s = Canvas(root,width = 1200, height = 600)
->>>>>>> da22cc76830922dacf69cb9feb90419cbafe2cbc
 s.pack()
 ######
 #MAPS#
@@ -90,19 +86,7 @@ map1 = [[[0,1,1,1],
          [1,1,1,1],
          [1,1,1,1]
          ],
-<<<<<<< HEAD
-        [[0,0,0,0],
-         [0,0,0,0],
-         [0,0,0,0],
-         [0,0,0,0]
-         ],
-        [[0,0,0,0],
-         [0,0,0,0],
-         [0,0,0,0],
-         [0,0,0,0]
-        ]
-        ]
-=======
+
         [[1,1,1,1],
          [1,1,1,1],
          [1,1,1,1],
@@ -445,7 +429,6 @@ map4 = [[[
 ]]]
 map5 = []
 
->>>>>>> da22cc76830922dacf69cb9feb90419cbafe2cbc
 ###########
 #Variables#
 ###########
@@ -511,8 +494,7 @@ root.bind("<s>", lambda event: bindKey(3,1))
 ###########
 
 while game == True:
-<<<<<<< HEAD
-=======
+
     
     if currmap[x][y][z][w] == 2:
         levelupdate = True
@@ -532,7 +514,6 @@ while game == True:
         level+=1
         currmap = levelup(level)
 
->>>>>>> da22cc76830922dacf69cb9feb90419cbafe2cbc
     if keys[0] == 1:
         imgplayer = PhotoImage (file = "Images/Robot/bot right.ppm")
         if x+1<4:
