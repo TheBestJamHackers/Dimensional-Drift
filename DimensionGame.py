@@ -1,9 +1,3 @@
-# -*- coding: utf-8 -*-
-"""
-Spyder Editor
-
-This is a temporary script file.
-"""
 from tkinter import *
 from time import sleep
 root = Tk()
@@ -84,10 +78,10 @@ map1 = [[[0,0,0,0],
          [0,0,0,0],
          [0,0,0,0]
          ],
-        [[0,0,0,0],
-         [0,0,0,0],
-         [0,0,0,0],
-         [0,0,0,0]
+        [[1,1,1,1],
+         [1,0,0,1],
+         [1,0,0,1],
+         [1,1,1,1]
          ],
         [[0,0,0,0],
          [0,0,0,0],
@@ -95,51 +89,52 @@ map1 = [[[0,0,0,0],
          [0,0,0,0]
          ]
         ]
+map2 = []
+map3 = []
+map4 = []
+map5 = []
 ###########
 #Variables#
 ###########
 size = 3/4
 player = 0
 keys = [0,0,0,0,0,0,0,0]
-x = 2
-y = 2
-w = 2
-z = 2
+x = 0
+y = 0
+w = 0
+z = 0
 game = True
 blockx = []
 blocky = []
 blocks = []
 currmap = map1
+level = 0
+levelupdate = True
 
 ########
 #Images#
 ########
+
 imgblock = PhotoImage (file = "Images/Environment/Block.pgm")
 imgplayer = PhotoImage (file = "Images/Robot/front.pgm")
 
 ###########
 #Functions#
 ###########
+def levelup(level):
+    if level==1:
+        return(map1)
+    elif level==2:
+        return(map2)
+    elif level==3:
+        return(map3)
+    elif level==4:
+        return(map4)
+    elif level==5:
+        return(map5)
+
 def bindKey(key, bind):
     keys[key] = bind
-
-#import mp3play
-#f = mp3play.load('Sound.mp3')
-#play = lambda: f.play()
-
-def roomgeneration(currmap,blockx,blocky):
-    blockx = []
-    blocky = []
-    for i in range(len(currmap)):
-        for u in range(len(currmap[i])):
-            if currmap[i][u] == 1:
-                blockx.append((u*100*size)+50*size)
-                blocky.append((i*100*size)+50*size)
-    return(blockx,blocky)
-
-################################
-#SPOOOPY SCARY SKELETONS!!!!111#
-################################
 
 ##############
 #Key Bindings#
@@ -153,10 +148,19 @@ root.bind("<d>", lambda event: bindKey(0,1))
 root.bind("<a>", lambda event: bindKey(1,1))
 root.bind("<w>", lambda event: bindKey(2,1))
 root.bind("<s>", lambda event: bindKey(3,1))
+
 ###########
 #Main Loop#
 ###########
 while game == True:
+    if levelupdate == True:
+        x = 0
+        y = 0
+        w = 0
+        z = 0
+        levelupdate = False
+        level+=1
+        currmap = levelup(level)
     if keys[0] == 1:
         if x+1<4:
             if currmap[x+1][y][z][w] != 1:
@@ -202,8 +206,6 @@ while game == True:
                 s.create_image(
                         x2 * 100 * size + 150 * size,
                         y2 * 100 * size + 150 * size,
-                        x2 * 100 * size + 50 * size,
-                        y2 * 100 * size + 50 * size,
                         image=imgblock)
     
     for z2 in range(len(currmap[x][y])):
@@ -212,8 +214,6 @@ while game == True:
                 s.create_image(
                     z2 * 100 * size + 750 * size, 
                     w2 * 100 * size + 150 * size,
-                    z2 * 100 * size + 650 * size,
-                    w2 * 100 * size + 50 * size,
                     image=imgblock)
 
     player = s.create_image(x*100*size+150*size,y*100*size+150*size,image=imgplayer)
