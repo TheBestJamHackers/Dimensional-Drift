@@ -480,6 +480,7 @@ root.bind("<s>", lambda event: bindKey(3,1))
 ###########
 #Main Loop#
 ###########
+
 while game == True:
     
     if currmap[x][y][z][w] == 2:
