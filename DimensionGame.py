@@ -148,7 +148,7 @@ while game == True:
     if musicTime == 0:
         play()
     musicTime += 1
-    if musicTime == 1600
+    if musicTime == 1600:
         musicTime = 0
 
     if keys[0] == 1:
