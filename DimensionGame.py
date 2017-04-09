@@ -116,6 +116,8 @@ currmap = map1
 ########
 imgblock = PhotoImage (file = "Images/Environment/Block.ppm")
 imgplayer = PhotoImage (file = "Images/Robot/bot front.ppm")
+imggrid = PhotoImage (file = "Images/Environment/Grid.ppm")
+imgbg = PhotoImage (file = "Images/Environment/Background.ppm")
 
 ###########
 #Functions#
@@ -196,6 +198,9 @@ while game == True:
     #Frame Update#
     ##############
     s.delete("all")
+    s.create_image(0, 0, image=imgbg)
+    s.create_image(150*size, 150*size, image=imggrid)
+    s.create_image(150*size, 150*size, image=imggrid)
     for x2 in range(len(currmap)):
         for y2 in range(len(currmap[x2])):
             if currmap[x2][y2][z][w] == 1:
@@ -218,5 +223,6 @@ while game == True:
 
     player = s.create_image(x*100*size+150*size,y*100*size+150*size,image=imgplayer)
     plawer = s.create_image(z*100*size+750*size,w*100*size+150*size,image=imgplayer)
+    
     s.update()
     sleep(0.1)
