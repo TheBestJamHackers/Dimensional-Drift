@@ -52,6 +52,7 @@ currmap = map1
 #Images#
 ########
 imgblock = PhotoImage (file = "Images/Environment/Block.pgm")
+imgplayer = PhotoImage (file = "Images/Robot/front.pgm")
 
 ###########
 #Functions#
@@ -59,7 +60,7 @@ imgblock = PhotoImage (file = "Images/Environment/Block.pgm")
 def bindKey(key, bind):
     keys[key] = bind
 
-import mp3play
+#import mp3play
 #f = mp3play.load('Sound.mp3')
 #play = lambda: f.play()
 
@@ -131,7 +132,7 @@ while game == True:
     s.delete("all")
     for i in range(len(blockx)):
         s.create_image(blockx[i]+50*size,blocky[i]+50*size,blockx[i]-50*size,blocky[i]-50*size, image=imgblock)
-    player = s.create_rectangle(x*100+150*size,y*100+150*size,x*100+50*size,y*100+50*size,fill="blue")
-    plawer = s.create_rectangle(z*100+750*size,w*100+150*size,z*100+650*size,w*100+50*size,fill="blue")
+    player = s.create_image(x*100*size+150*size,y*100*size+150*size,image=imgplayer)
+    plawer = s.create_image(z*100+750*size,w*100+150*size,image=imgplayer)
     s.update()
     sleep(0.1)
