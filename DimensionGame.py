@@ -7,7 +7,7 @@ This is a temporary script file.
 from tkinter import *
 from time import sleep
 root = Tk()
-s = Canvas(root,width = 1200, height = 600)
+s = Canvas(root,width = 900, height = 450)
 s.pack()
 ######
 #MAPS#
