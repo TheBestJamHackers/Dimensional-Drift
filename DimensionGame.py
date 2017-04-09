@@ -114,8 +114,8 @@ currmap = map1
 ########
 #Images#
 ########
-imgblock = PhotoImage (file = "Images/Environment/Block.pgm")
-imgplayer = PhotoImage (file = "Images/Robot/front.pgm")
+imgblock = PhotoImage (file = "Images/Environment/Block.ppm")
+imgplayer = PhotoImage (file = "Images/Robot/bot front.ppm")
 
 ###########
 #Functions#
