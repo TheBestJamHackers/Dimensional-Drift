@@ -4,7 +4,6 @@ Spyder Editor
 
 This is a temporary script file.
 """
-
 from tkinter import *
 from time import sleep
 root = Tk()
@@ -48,6 +47,12 @@ blockx = []
 blocky = []
 blocks = []
 currmap = map1
+
+########
+#Images#
+########
+imgblock = PhotoImage (file = "Images/Environment/Block.pgm")
+
 ###########
 #Functions#
 ###########
@@ -125,7 +130,7 @@ while game == True:
     ##############
     s.delete("all")
     for i in range(len(blockx)):
-        s.create_rectangle(blockx[i]+50*size,blocky[i]+50*size,blockx[i]-50*size,blocky[i]-50*size,fill="black")
+        s.create_image(blockx[i]+50*size,blocky[i]+50*size,blockx[i]-50*size,blocky[i]-50*size, image=imgblock)
     player = s.create_rectangle(x*100+150*size,y*100+150*size,x*100+50*size,y*100+50*size,fill="blue")
     plawer = s.create_rectangle(z*100+750*size,w*100+150*size,z*100+650*size,w*100+50*size,fill="blue")
     s.update()
