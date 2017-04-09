@@ -53,6 +53,22 @@ currmap = map1
 ###########
 def bindKey(key, bind):
     keys[key] = bind
+
+import mp3play
+#f = mp3play.load('Sound.mp3')
+#play = lambda: f.play()
+
+def roomgeneration(currmap,blockx,blocky):
+    blockx = []
+    blocky = []
+    for i in range(len(currmap)):
+        for u in range(len(currmap[i])):
+            if currmap[i][u] == 1:
+                blockx.append((u*100*size)+50*size)
+                blocky.append((i*100*size)+50*size)
+    return(blockx,blocky)
+
+
 ##############
 #Key Bindings#
 ##############
