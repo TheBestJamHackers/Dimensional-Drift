@@ -444,6 +444,7 @@ blockx = []
 blocky = []
 blocks = []
 currmap = map1
+musicTime = 0
 
 ########
 #Images#
