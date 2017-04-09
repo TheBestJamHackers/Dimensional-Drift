@@ -1,13 +1,14 @@
+import os
+from tkinter import *
+from time import sleep
+if os.name=="nt":
+    import winsound
 # -*- coding: utf-8 -*-
 """
 Spyder Editor
 
 This is a temporary script file.
 """
-from tkinter import *
-from time import sleep
-import winsound
-
 root = Tk()
 s = Canvas(root,width = 900, height = 450)
 s.pack()
@@ -265,7 +266,88 @@ map3 = [[[0,0,1,2],
          [1,1,1,1]
          ]
         ]
-
+map4 = [[[
+[0,0,0,0],
+[1,1,1,1],
+[1,1,1,1],
+[0,0,0,0]
+],[
+[0,1,1,1],
+[0,1,1,1],
+[1,1,1,1],
+[1,1,1,1]
+],[
+[0,1,1,1],
+[0,1,1,1],
+[1,1,1,1],
+[1,1,1,1]
+],[
+[0,1,1,1],
+[0,1,1,1],
+[1,1,1,1],
+[1,1,1,1]
+]],[[
+[0,1,1,1],
+[0,1,1,1],
+[1,1,1,1],
+[1,1,1,1]
+],[
+[0,1,1,1],
+[0,1,1,1],
+[1,1,1,1],
+[1,1,1,1]
+],[
+[0,1,1,1],
+[0,1,1,1],
+[1,1,1,1],
+[1,1,1,1]
+],[
+[0,1,1,1],
+[0,1,1,1],
+[1,1,1,1],
+[1,1,1,1]
+]],[[
+[0,0,0,0],
+[1,0,0,1],
+[1,0,0,1],
+[0,0,0,0]
+],[
+[0,1,1,1],
+[0,1,1,1],
+[1,1,1,1],
+[1,1,1,1]
+],[
+[0,1,1,1],
+[0,1,1,1],
+[1,1,1,1],
+[1,1,1,1]
+],[
+[0,1,1,1],
+[0,1,1,1],
+[1,1,1,1],
+[1,1,1,1]
+]],[[
+[0,1,1,1],
+[0,1,1,1],
+[1,1,1,1],
+[1,1,1,1]
+],[
+[0,1,1,1],
+[0,1,1,1],
+[1,1,1,1],
+[1,1,1,1]
+],[
+[0,1,1,1],
+[0,1,1,1],
+[1,1,1,1],
+[1,1,1,1]
+],[
+[0,1,1,1],
+[0,1,1,1],
+[1,1,1,1],
+[1,1,1,1]
+]]]
+map5 = []
 
 ###########
 #Variables#
@@ -283,6 +365,7 @@ blocky = []
 blocks = []
 currmap = map1
 musicTime = 0
+levelupdate = True
 
 ########
 #Images#
@@ -340,7 +423,8 @@ while game == True:
         levelupdate = True
 
     if musicTime == 0:
-        winsound.PlaySound('BGM.wav', winsound.SND_FILENAME)
+        if os.name=="nt":
+            winsound.PlaySound('BGM.wav', winsound.SND_FILENAME)
     musicTime += 1
     if musicTime == 1600:
         musicTime = 0
