@@ -12,7 +12,7 @@ s.pack()
 ######
 #MAPS#
 ######
-map1 = [[[1,0,0,0],
+map1 = [[[0,0,0,0],
          [0,0,0,0],
          [0,0,0,0],
          [0,0,0,0]
@@ -196,15 +196,25 @@ while game == True:
     #Frame Update#
     ##############
     s.delete("all")
-
-    for x2 in range(len(currmap[z][w])):
-        for y2 in range(len(currmap[z][w][x2])):
-            if currmap[z][w][x2][y2] == 1:
-                s.create_image(x2+150*size,y2+150*size, image=imgblock)
-    for z2 in range(len(currmap)):
-        for w2 in range(len(currmap[z2])):
-            if currmap[z2][w2][x][y] == 1:
-                s.create_image(x2+750*size,y2+150*size, image=imgblock)
+    for x2 in range(len(currmap)):
+        for y2 in range(len(currmap[x2])):
+            if currmap[x2][y2][z][w] == 1:
+                s.create_image(
+                        x2 * 100 * size + 150 * size,
+                        y2 * 100 * size + 150 * size,
+                        x2 * 100 * size + 50 * size,
+                        y2 * 100 * size + 50 * size,
+                        image=imgblock)
+    
+    for z2 in range(len(currmap[x][y])):
+        for w2 in range(len(currmap[x][y][z2])):
+            if currmap[x][y][z2][w2] == 1:
+                s.create_image(
+                    z2 * 100 * size + 750 * size, 
+                    w2 * 100 * size + 150 * size,
+                    z2 * 100 * size + 650 * size,
+                    w2 * 100 * size + 50 * size,
+                    image=imgblock)
 
     player = s.create_image(x*100*size+150*size,y*100*size+150*size,image=imgplayer)
     plawer = s.create_image(z*100*size+750*size,w*100*size+150*size,image=imgplayer)
