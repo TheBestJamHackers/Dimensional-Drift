@@ -4,7 +4,6 @@ Spyder Editor
 
 This is a temporary script file.
 """
-
 from tkinter import *
 from time import sleep
 root = Tk()
@@ -111,6 +110,12 @@ blockx = []
 blocky = []
 blocks = []
 currmap = map1
+
+########
+#Images#
+########
+imgblock = PhotoImage (file = "Images/Environment/Block.pgm")
+
 ###########
 #Functions#
 ###########
