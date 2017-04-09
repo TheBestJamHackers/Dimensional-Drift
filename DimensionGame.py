@@ -3,7 +3,7 @@ from time import sleep
 import mp3play
 root = Tk()
 f = mp3play.load('Biosaur - Dimensional Drift BGM.mp3')
-play = lambda: f.play()
+# play = lambda: f.play()
 s = Canvas(root,width = 1200, height = 600)
 s.pack()
 musicTime = 0
@@ -180,7 +180,7 @@ map3 = [[[
 [0,0,0,0],
 [1,1,1,0],
 [1,1,1,0],
-[0,0,0,0]
+[2,0,0,0]
 ],[
 [0,1,1,1],
 [1,1,1,1],
@@ -403,7 +403,7 @@ while game == True:
 =======
 
     if musicTime == 0:
-        play()
+        f.play()
     musicTime += 1
     if musicTime == 1600:
         musicTime = 0
