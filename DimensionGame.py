@@ -196,23 +196,17 @@ while game == True:
     #Frame Update#
     ##############
     s.delete("all")
-<<<<<<< HEAD
-    for i in range(len(blockx)):
-        s.create_image(blockx[i]+50*size,blocky[i]+50*size,blockx[i]-50*size,blocky[i]-50*size, image=imgblock)
-    player = s.create_image(x*100*size+150*size,y*100*size+150*size,image=imgplayer)
-    plawer = s.create_image(z*100+750*size,w*100+150*size,image=imgplayer)
-=======
+
     for x2 in range(len(currmap[z][w])):
         for y2 in range(len(currmap[z][w][x2])):
             if currmap[z][w][x2][y2] == 1:
-                s.create_rectangle(x2+150*size,y2+150*size,x2+50*size,y2+50*size,fill="black")
+                s.create_image(x2+150*size,y2+150*size, image=imgblock)
     for z2 in range(len(currmap)):
         for w2 in range(len(currmap[z2])):
             if currmap[z2][w2][x][y] == 1:
-                s.create_rectangle(x2+750*size,y2+150*size,x2+650*size,y2+50*size,fill="black")
+                s.create_image(x2+750*size,y2+150*size, image=imgblock)
 
-    player = s.create_rectangle(x*100*size+150*size,y*100*size+150*size,x*100*size+50*size,y*100*size+50*size,fill="blue")
-    plawer = s.create_rectangle(z*100*size+750*size,w*100*size+150*size,z*100*size+650*size,w*100*size+50*size,fill="blue")
->>>>>>> edcdb419af29c036bab68791d49fbfd5ad211aa3
+    player = s.create_image(x*100*size+150*size,y*100*size+150*size,image=imgplayer)
+    plawer = s.create_image(z*100*size+750*size,w*100*size+150*size,image=imgplayer)
     s.update()
     sleep(0.1)
