@@ -373,6 +373,7 @@ level = 0
 ########
 imgblock = PhotoImage (file = "Images/Environment/Block.ppm")
 imgplayer = PhotoImage (file = "Images/Robot/bot front.ppm")
+imgplawer = PhotoImage (file = "Images/Robot/bot front.ppm")
 imggrid = PhotoImage (file = "Images/Environment/Grid.ppm")
 imgbg = PhotoImage (file = "Images/Environment/Background.ppm")
 
@@ -434,39 +435,49 @@ while game == True:
 
     if keys[0] == 1:
         imgplayer = PhotoImage (file = "Images/Robot/bot right.ppm")
+        imgplawer = PhotoImage (file = "Images/Robot/bot right.ppm")
         if x+1<4:
             if currmap[x+1][y][z][w] != 1:
                 x += 1
     if keys[1] == 1:
         imgplayer = PhotoImage (file = "Images/Robot/bot left.ppm")
+        imgplawer = PhotoImage (file = "Images/Robot/bot left.ppm")
         if x-1>-1:
             if currmap[x-1][y][z][w] != 1:
                 x -= 1
     if keys[2] == 1:
         imgplayer = PhotoImage (file = "Images/Robot/bot up.ppm")
+        imgplawer = PhotoImage (file = "Images/Robot/bot front.ppm")
         if y-1>-1:
             if currmap[x][y-1][z][w] != 1:            
                 y -= 1
     if keys[3] == 1:
         imgplayer = PhotoImage (file = "Images/Robot/bot down.ppm")
+        imgplawer = PhotoImage (file = "Images/Robot/bot back.ppm")
         if y+1<4:
             if currmap[x][y+1][z][w] != 1:
                 y += 1
     if keys[4] == 1:
+        imgplayer = PhotoImage (file = "Images/Robot/bot right.ppm")
+        imgplawer = PhotoImage (file = "Images/Robot/bot right.ppm")
         if z+1<4:
             if currmap[x][y][z+1][w] != 1:
                 z += 1
     if keys[5] == 1:
+        imgplawer = PhotoImage (file = "Images/Robot/bot left.ppm")
+        imgplawer = PhotoImage (file = "Images/Robot/bot left.ppm")
         if z-1>-1:
             if currmap[x][y][z-1][w] != 1:
                 z -= 1
     if keys[6] == 1:
         imgplayer = PhotoImage (file = "Images/Robot/bot front.ppm")
+        imgplawer = PhotoImage (file = "Images/Robot/bot up.ppm")
         if w-1>-1:
             if currmap[x][y][z][w-1] != 1:            
                 w -= 1
     if keys[7] == 1:
         imgplayer = PhotoImage (file = "Images/Robot/bot back.ppm")
+        imgplawer = PhotoImage (file = "Images/Robot/bot down.ppm")
         if w+1<4:
             if currmap[x][y][z][w+1] != 1:
                 w += 1
@@ -499,7 +510,7 @@ while game == True:
                     image=imgblock)
 
     player = s.create_image(x*100*size+150*size,y*100*size+150*size,image=imgplayer)
-    plawer = s.create_image(z*100*size+750*size,w*100*size+150*size,image=imgplayer)
+    plawer = s.create_image(z*100*size+750*size,w*100*size+150*size,image=imgplawer)
     
     s.update()
     sleep(0.1)
