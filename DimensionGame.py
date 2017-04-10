@@ -366,6 +366,7 @@ blocks = []
 currmap = map1
 musicTime = 0
 levelupdate = True
+level = 0
 
 ########
 #Images#
@@ -381,23 +382,17 @@ imgbg = PhotoImage (file = "Images/Environment/Background.ppm")
 def bindKey(key, bind):
     keys[key] = bind
 
-#import mp3play
-#f = mp3play.load('Sound.mp3')
-#play = lambda: f.play()
-
-def roomgeneration(currmap,blockx,blocky):
-    blockx = []
-    blocky = []
-    for i in range(len(currmap)):
-        for u in range(len(currmap[i])):
-            if currmap[i][u] == 1:
-                blockx.append((u*100*size)+50*size)
-                blocky.append((i*100*size)+50*size)
-    return(blockx,blocky)
-
-################################
-#SPOOOPY SCARY SKELETONS!!!!111#
-################################
+def levelup(level):
+    if level == 1:
+        return map1
+    if level == 2:
+        return map2
+    if level == 3:
+        return map3
+    if level == 4:
+        return map4
+    if level == 5:
+        return map5
 
 ##############
 #Key Bindings#
@@ -483,7 +478,7 @@ while game == True:
     ##############
     s.delete("all")
 
-    s.create_image(0, 0, image=imgbg)
+    s.create_image(450, 225, image=imgbg)
     s.create_image(300*size, 300*size, image=imggrid)
     s.create_image(900*size, 300*size, image=imggrid)
 
@@ -493,8 +488,6 @@ while game == True:
                 s.create_image(
                         x2 * 100 * size + 150 * size,
                         y2 * 100 * size + 150 * size,
-                        x2 * 100 * size + 50 * size,
-                        y2 * 100 * size + 50 * size,
                         image=imgblock)
     
     for z2 in range(len(currmap[x][y])):
@@ -503,8 +496,6 @@ while game == True:
                 s.create_image(
                     z2 * 100 * size + 750 * size, 
                     w2 * 100 * size + 150 * size,
-                    z2 * 100 * size + 650 * size,
-                    w2 * 100 * size + 50 * size,
                     image=imgblock)
 
     player = s.create_image(x*100*size+150*size,y*100*size+150*size,image=imgplayer)
