@@ -422,9 +422,9 @@ while game == True:
 
     if musicTime == 0:
         if os.name=="nt":
-            winsound.PlaySound('BGM.wav', winsound.SND_FILENAME)
+            winsound.PlaySound('BGM.wav', winsound.SND_ASYNC)
     musicTime += 1
-    if musicTime == 1600:
+    if musicTime == 160:
         musicTime = 0
 
     if levelupdate == True:
