@@ -411,6 +411,9 @@ root.bind("<d>", lambda event: bindKey(0,1))
 root.bind("<a>", lambda event: bindKey(1,1))
 root.bind("<w>", lambda event: bindKey(2,1))
 root.bind("<s>", lambda event: bindKey(3,1))
+root.bind("<1>", lambda event: bindKey(8,1))
+root.bind("<2>", lambda event: bindKey(9,1))
+root.bind("<3>", lambda event: bindKey(10,1))
 ###########
 #Main Loop#
 ###########
