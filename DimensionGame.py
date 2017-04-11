@@ -468,8 +468,9 @@ while game == True:
         imgplayer = PhotoImage (file = "Images/Robot/bot up.ppm")
         imgplawer = PhotoImage (file = "Images/Robot/bot front.ppm")
         if y-1>-1:
-            if currmap[x][y-1][z][w] != 1:            
-                y -= 1
+            if gamemode != 1:
+                if currmap[x][y-1][z][w] != 1:            
+                    y -= 1
             else:
                 y -= 1
     if keys[3] == 1:
@@ -479,8 +480,8 @@ while game == True:
             if gamemode != 1:
                 if currmap[x][y+1][z][w] != 1:
                     y += 1
-                else:
-                    y += 1
+            else:
+                y += 1
     if keys[4] == 1:
         imgplayer = PhotoImage (file = "Images/Robot/bot right.ppm")
         imgplawer = PhotoImage (file = "Images/Robot/bot right.ppm")
@@ -488,8 +489,8 @@ while game == True:
             if gamemode != 1:
                 if currmap[x][y][z+1][w] != 1:
                     z += 1
-                else:
-                    z += 1
+            else:
+                z += 1
     if keys[5] == 1:
         imgplawer = PhotoImage (file = "Images/Robot/bot left.ppm")
         imgplawer = PhotoImage (file = "Images/Robot/bot left.ppm")
@@ -497,8 +498,8 @@ while game == True:
             if gamemode != 1:
                 if currmap[x][y][z-1][w] != 1:
                     z -= 1
-                else:
-                    z -= 1
+            else:
+                z -= 1
     if keys[6] == 1:
         imgplayer = PhotoImage (file = "Images/Robot/bot front.ppm")
         imgplawer = PhotoImage (file = "Images/Robot/bot up.ppm")
@@ -506,8 +507,8 @@ while game == True:
             if gamemode != 1:
                 if currmap[x][y][z][w-1] != 1:            
                     w -= 1
-                else:
-                    w -= 1
+            else:
+                w -= 1
     if keys[7] == 1:
         imgplayer = PhotoImage (file = "Images/Robot/bot back.ppm")
         imgplawer = PhotoImage (file = "Images/Robot/bot down.ppm")
@@ -515,8 +516,8 @@ while game == True:
             if gamemode != 1:
                 if currmap[x][y][z][w+1] != 1:
                     w += 1
-                else:
-                    w += 1
+            else:
+                w += 1
     keys = [0,0,0,0,0,0,0,0,0,0,0]
 
 
