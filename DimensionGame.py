@@ -501,7 +501,7 @@ while game == True:
             if gamemode != 1:
                 if currmap[x][y][z][w+1] != 1:
                     w += 1
-    keys = [0,0,0,0,0,0,0,0]
+    keys = [0,0,0,0,0,0,0,0,0,0,0]
 
 
     ##############
