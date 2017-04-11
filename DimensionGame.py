@@ -439,7 +439,13 @@ while game == True:
         levelupdate = False
         level+=1
         currmap = levelup(level)
-
+        
+    if keys[8] == 1:
+        if gamemode != 1:
+            gamemode = 1
+        else:
+            gamemode = 0
+            
     if keys[0] == 1:
         imgplayer = PhotoImage (file = "Images/Robot/bot right.ppm")
         imgplawer = PhotoImage (file = "Images/Robot/bot right.ppm")
