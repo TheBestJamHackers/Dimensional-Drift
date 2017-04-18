@@ -422,7 +422,8 @@ while game == True:
 
     
     if currmap[x][y][z][w] == 2:
-        levelupdate = True
+        if gamemode != 1:
+            levelupdate = True
 
     if musicTime == 0:
         if os.name=="nt":
@@ -519,22 +520,24 @@ while game == True:
             else:
                 w += 1
     if keys[9] == 1:
-        if currmap[x][y][z][w] != 2:
-            if currmap[x][y][z][w] != 1:
-                currmap[x][y][z][w] = 1
-            else:
-                currmap[x][y][z][w] = 0
-        else:
-            currmap[x][y][z][w] = 1
+        if gamemode = 1:
+        	if currmap[x][y][z][w] != 2:
+            	if currmap[x][y][z][w] != 1:
+                	currmap[x][y][z][w] = 1
+            	else:
+                	currmap[x][y][z][w] = 0
+        	else:
+            	currmap[x][y][z][w] = 1
                 
     if keys[10] == 1:
-        if currmap[x][y][z][w] != 1:
-            if currmap[x][y][z][w] != 2:
-                currmap[x][y][z][w] = 2
-            else:
-                currmap[x][y][z][w] = 0
-        else:
-            currmap[x][y][z][w] = 2
+        if gamemode = 1:
+        	if currmap[x][y][z][w] != 2:
+            	if currmap[x][y][z][w] != 1:
+                	currmap[x][y][z][w] = 1
+            	else:
+                	currmap[x][y][z][w] = 0
+        	else:
+            	currmap[x][y][z][w] = 1
             
     keys = [0,0,0,0,0,0,0,0,0,0,0]
 
