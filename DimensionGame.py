@@ -518,6 +518,24 @@ while game == True:
                     w += 1
             else:
                 w += 1
+    if keys[9] == 1:
+        if currmap[x][y][z][w] != 2:
+            if currmap[x][y][z][w] != 1:
+                currmap[x][y][z][w] = 1
+            else:
+                currmap[x][y][z][w] = 0
+        else:
+            currmap[x][y][z][w] = 1
+                
+    if keys[10] == 1:
+        if currmap[x][y][z][w] != 1:
+            if currmap[x][y][z][w] != 2:
+                currmap[x][y][z][w] = 2
+            else:
+                currmap[x][y][z][w] = 0
+        else:
+            currmap[x][y][z][w] = 2
+            
     keys = [0,0,0,0,0,0,0,0,0,0,0]
 
 
