@@ -525,15 +525,15 @@ while game == True:
                 
     if keys[11] == 1:
         a = ""
-        b = ""
+        save = ""
         for p in range(4):
             for q in range(4):
                 for r in range(4):
                     for s in range(4):
-                        a += currmap[p][q][r][s]
-                    b += chr int(int(a),2)
-        save = b
-                    
+                        a += str(currmap[p][q][r][s])
+                    save += chr(int(a,3))
+                    a = ""
+        open("levels.txt","w").write(save)
         
                 
     keys = [0,0,0,0,0,0,0,0,0,0,0]
