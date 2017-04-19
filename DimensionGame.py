@@ -368,9 +368,10 @@ blocky = []
 blocks = []
 currmap = map1
 musicTime = 0
-levelupdate = True
+levelUpdate = True
 level = 0
 gamemode = 0
+save = ""
 
 ########
 #Images#
@@ -414,16 +415,19 @@ root.bind("s", lambda event: bindKey(3,1))
 root.bind("1", lambda event: bindKey(8,1))
 root.bind("2", lambda event: bindKey(9,1))
 root.bind("3", lambda event: bindKey(10,1))
+
+root.bind("4", lambda event: bindKey(11,1))
+
 ###########
 #Main Loop#
 ###########
 
 while game == True:
 
-    
     if currmap[x][y][z][w] == 2:
         if gamemode != 1:
             levelupdate = True
+
 
     if musicTime == 0:
         if os.name=="nt":
@@ -432,21 +436,15 @@ while game == True:
     if musicTime == 160:
         musicTime = 0
 
-    if levelupdate == True:
+    if levelUpdate == True:
         x = 0
         y = 0
         w = 0
         z = 0
-        levelupdate = False
+        levelUpdate = False
         level+=1
         currmap = levelup(level)
-        
-    if keys[8] == 1:
-        if gamemode != 1:
-            gamemode = 1
-        else:
-            gamemode = 0
-            
+    
     if keys[0] == 1:
         imgplayer = PhotoImage (file = "Images/Robot/bot right.ppm")
         imgplawer = PhotoImage (file = "Images/Robot/bot right.ppm")
@@ -519,6 +517,13 @@ while game == True:
                     w += 1
             else:
                 w += 1
+    
+    if keys[8] == 1:
+        if gamemode != 1:
+            gamemode = 1
+        else:
+            gamemode = 0
+    
     if keys[9] == 1:
         if gamemode == 1:
             if currmap[x][y][z][w] != 2:
@@ -541,6 +546,18 @@ while game == True:
             
     keys = [0,0,0,0,0,0,0,0,0,0,0]
 
+    if keys[11] == 1:
+        a = ""
+        save = ""
+        for p in range(4):
+            for q in range(4):
+                for r in range(4):
+                    for s in range(4):
+                        a += str(currmap[p][q][r][s])
+                if r % 2:
+                    save += chr(int(a,4))
+                    a = ""
+        open("levels.txt","w").write(save)   
 
     ##############
     #Frame Update#
