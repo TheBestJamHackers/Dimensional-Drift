@@ -350,7 +350,8 @@ map4 = [[[0,1,0,0],
          ]
         ]
 
-map5 = []
+importmap = open("Levels/" + input("Insert Level Name -->"),"r")
+map5 = importmap.read()
 
 ###########
 #Variables#
@@ -398,7 +399,7 @@ def levelup(level):
     if level == 4:
         return map4
     if level == 5:
-        return map1
+        return map5
 
 ##############
 #Key Bindings#
