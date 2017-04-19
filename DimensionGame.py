@@ -551,7 +551,7 @@ while game == True:
                 for r in range(4):
                     for s in range(4):
                         a += str(currmap[p][q][r][s])
-            save += chr(int(a,16))
+            save += chr(int(a,8))
             a = ""
         open("levels.txt","w").write(save)   
 
