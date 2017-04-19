@@ -576,11 +576,10 @@ while game == True:
                         y2 * 100 * size + 150 * size,
                         image=imgblock)
             if currmap[x2][y2][z][w] == 2:
-                s.create_oval(
-                        x2 * 100 * size + 100 * size,
-                        y2 * 100 * size + 100 * size,
-                        x2 * 100 * size + 200 * size,
-                        y2 * 100 * size + 200 * size,fill="yellow")
+                s.create_image(
+                        x2 * 100 * size + 150 * size,
+                        y2 * 100 * size + 150 * size,
+                        image = imgportal)
     
     for z2 in range(len(currmap[x][y])):
         for w2 in range(len(currmap[x][y][z2])):
@@ -590,11 +589,10 @@ while game == True:
                     w2 * 100 * size + 150 * size,
                     image=imgblock)
             if currmap[x][y][z2][w2] == 2:
-                s.create_oval(
-                    z2 * 100 * size + 700 * size, 
-                    w2 * 100 * size + 100 * size,
-                    z2 * 100 * size + 800 * size, 
-                    w2 * 100 * size + 200 * size,fill="yellow")
+                s.create_image(
+                    z2 * 100 * size + 750 * size, 
+                    w2 * 100 * size + 150 * size,
+                    image = imgportal)
 
     player = s.create_image(x*100*size+150*size,y*100*size+150*size,image=imgplayer)
     plawer = s.create_image(z*100*size+750*size,w*100*size+150*size,image=imgplawer)
