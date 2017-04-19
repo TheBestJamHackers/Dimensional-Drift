@@ -424,10 +424,10 @@ root.bind("4", lambda event: bindKey(11,1))
 
 while game == True:
 
+    
     if currmap[x][y][z][w] == 2:
         if gamemode != 1:
-            levelupdate = True
-
+            levelUpdate = True
 
     if musicTime == 0:
         if os.name=="nt":
