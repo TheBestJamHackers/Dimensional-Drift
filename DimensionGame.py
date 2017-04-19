@@ -443,13 +443,7 @@ while game == True:
         levelUpdate = False
         level+=1
         currmap = levelup(level)
-        
-    if keys[8] == 1:
-        if gamemode != 1:
-            gamemode = 1
-        else:
-            gamemode = 0
-            
+    
     if keys[0] == 1:
         imgplayer = PhotoImage (file = "Images/Robot/bot right.ppm")
         imgplawer = PhotoImage (file = "Images/Robot/bot right.ppm")
@@ -522,7 +516,33 @@ while game == True:
                     w += 1
             else:
                 w += 1
+    
+    if keys[8] == 1:
+        if gamemode != 1:
+            gamemode = 1
+        else:
+            gamemode = 0
+    
+    if keys[9] == 1:
+        if currmap[x][y][z][w] != 2:
+            if currmap[x][y][z][w] != 1:
+                currmap[x][y][z][w] = 1
+            else:
+                currmap[x][y][z][w] = 0
+        else:
+            currmap[x][y][z][w] = 1
                 
+    if keys[10] == 1:
+        if currmap[x][y][z][w] != 1:
+            if currmap[x][y][z][w] != 2:
+                currmap[x][y][z][w] = 2
+            else:
+                currmap[x][y][z][w] = 0
+        else:
+            currmap[x][y][z][w] = 2
+            
+    keys = [0,0,0,0,0,0,0,0,0,0,0]
+
     if keys[11] == 1:
         a = ""
         save = ""
@@ -533,11 +553,7 @@ while game == True:
                         a += str(currmap[p][q][r][s])
             save += chr(int(a,16))
             a = ""
-        open("levels.txt","w").write(save)
-        
-                
-    keys = [0,0,0,0,0,0,0,0,0,0,0]
-
+        open("levels.txt","w").write(save)   
 
     ##############
     #Frame Update#
