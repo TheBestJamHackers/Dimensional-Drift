@@ -357,7 +357,7 @@ map5 = []
 ###########
 size = 3/4
 player = 0
-keys = [0,0,0,0,0,0,0,0,0,0,0]
+keys = [0,0,0,0,0,0,0,0,0,0,0,0]
 x = 2
 y = 2
 w = 2
@@ -557,7 +557,9 @@ while game == True:
                 if r % 2:
                     save += chr(int(a,4))
                     a = ""
-        open("levels.txt","w").write(save)   
+        open("levels.txt","w").write(save)
+        
+    keys = [0,0,0,0,0,0,0,0,0,0,0,0]
 
     ##############
     #Frame Update#
