@@ -375,12 +375,12 @@ gamemode = 0
 ########
 #Images#
 ########
-imgblock = PhotoImage (file = "Images/Environment/Block.ppm")
+imgblock = PhotoImage (file = "Images/Environment/Block.gif")
 imgplayer = PhotoImage (file = "Images/Robot/bot front.ppm")
 imgplawer = PhotoImage (file = "Images/Robot/bot front.ppm")
-imggrid = PhotoImage (file = "Images/Environment/Grid.ppm")
+imggrid = PhotoImage (file = "Images/Environment/Grid.gif")
 imgbg = PhotoImage (file = "Images/Environment/Background.ppm")
-
+imgportal = PhotoImage (file = "Images/Environment/Portal.gif")
 ###########
 #Functions#
 ###########
