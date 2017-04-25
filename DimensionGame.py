@@ -350,7 +350,7 @@ map4 = [[[0,1,0,0],
          ]
         ]
 
-importmap = open("Levels/levels.txt,"r")
+importmap = open("Levels/levels.txt","r")
 map5 = importmap.read()
 
 ###########
